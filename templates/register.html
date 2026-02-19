@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Simple Writing</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+
+    <body>
+        <div class="register-page">
+            <div>
+                <h1 style="padding-top: 80px;">Welcome</h1>
+            </div>
+            
+            <form action="/signup" method="POST">
+                <div class="signup">
+                    <label for="username" style="padding-right: 5px;">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" class="input">
+                </div>
+        
+                <div class="signup">
+                    <label for="password" style="padding-right: 5px;">Password:</label>
+                    <input type="password" id="password1" name="password" placeholder="Enter your password" class="input">
+                </div>
+
+                <div class="signup">
+                    <label for="password" style="padding-right: 5px;">Password:</label>
+                    <input type="password" id="password2" name="password" placeholder="Enter your password again" class="input">
+                </div>
+
+                <div class="signup">
+                    <button type="submit" class="button" style="width: 80px;">Sign up</button>
+                </div>
+            </form>
+    </body>
+</html>

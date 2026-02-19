@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Simple Writing</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+
+    <body>
+        <div class="flex-container">
+            <div class="sidebar">
+                <form action="/addact" method="POST">
+                    <div class="act">
+                        <input type="text" id="act" name="act" placeholder="Act name" class="input" style="width: 90%; margin-bottom : 10px;">
+                    </div>
+                    <div class="act">
+                        <button type="submit" class="button" style="width: 90%;">Create Act</button>
+                    </div>
+                </form>
+
+                <form action="/populateacts" method="POST">
+
+                </form>
+            </div>
+            
+
+            <div class="editor">
+                <h1 style="padding-top: 20px; padding-bottom: 20px;">Create a New Act</h1>
+                <p>Use the form on the left to create a new act for your story.</p>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2026 Kayra Sacan</p>
+        </footer>
+    </body>
+</html>
