@@ -12,6 +12,8 @@ h1 {
     text-align: center; 
     font-family: Garamond, serif; 
     color: #E0E0E0;
+	padding-top: 20px; 
+	padding-bottom: 20px;
 }
 
 .button {
@@ -49,7 +51,11 @@ h1 {
 }
 
 .sidebar {
-	width: 100px; 
+	position: sticky;
+	left: 0;
+	top: 0; 
+	width: 100px;
+	overflow-y: auto;
 	background-color: #2b2c2c;
 	padding: 15px;
 }
@@ -58,6 +64,12 @@ h1 {
 	flex: 1; 
 	background-color: #13141d;
 	padding: 15px;
+	overflow-y: auto;
+}
+
+.text-editor p {
+	margin-bottom: 1em; 
+	text-indent:48;
 }
 
 p {

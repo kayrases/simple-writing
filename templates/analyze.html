@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Analyze Text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="flex-container">
+        <div class="sidebar">
+            <form action="{{ url_for('welcome') }}" method="GET">
+                <button type="submit" class="button" style="width: 90%; margin-top: 20px;">
+                    Back to Welcome
+                </button>
+            </form>
+        </div>
+        <div class="editor">
+            <h1>Here is a text analysis:</h1>
+            <p>Total word count (cleaned): {{ word_count }}</p>
+        </div>
+    </div>
+</body>
+</html>

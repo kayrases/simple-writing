@@ -8,15 +8,21 @@
 <body>
     <div class="flex-container">
         <div class="sidebar">
+            <form action="{{ url_for('analyze') }}" method="GET">
+                <button type="submit" class="button" style="width: 90%; margin-top: 20px;">
+                    Analyze Text
+                </button>
+            </form>
+            <!--- 
             <form action="/addact" method="POST">
                 <div class="act">
                     <input type="text" id="act" name="act" placeholder="Act name" class="input" style="width: 90%; margin-bottom : 10px;">
                 </div>
-
                 <div class="act">
                     <button type="submit" class="button" style="width: 90%;">Create Act</button>
                 </div>
             </form>
+            --->
            <!--- <div class="add-section">
                 <button class="button" onclick="location.href='actone/actone.html'">Add Act</button>
                 <div style="margin: 10px 0;"></div>
@@ -33,11 +39,12 @@
             </nav>--->
         </div>
         <div class="editor">
-            <h1 style="padding-top: 20px; padding-bottom: 20px;">Welcome, {{ username }}!</h1>
-            <p>This is the synopsis</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex. Adipiscing elit quisque faucibus ex sapien vitae pellentesque.</p>
-            <p>Pretium tellus duis convallis tempus leo eu aenean.</p>
-            <p>Tellus duis convallis tempus leo eu aenean sed. Sed diam urna tempor pulvinar vivamus fringilla lacus. Lacus nec metus bibendum egestas iaculis massa nisl. Nisl malesuada lacinia integer nunc posuere ut hendrerit.</p>
+            <h1>Welcome, {{ username }}!</h1>
+            <div class = "text-editor">
+                {% for paragraph in paragraphs %}
+                    <p>{{ paragraph.strip() }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <footer>
