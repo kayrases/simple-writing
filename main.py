@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
@@ -32,7 +33,14 @@ def signup():
 @app.route('/welcome')
 def welcome():
     username = session.get("username", None)
-    return render_template("welcome.html", username=username.title())
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, 'data', 'white-nights.txt')
+
+    with open(file_path, "r", encoding="utf-8") as file: 
+        text = file.read()
+
+    return render_template("welcome.html", username=username.title(), text=text)
 
 @app.route('/act')
 def addact():
