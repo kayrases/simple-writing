@@ -40,7 +40,11 @@
         </div>
         <div class="editor">
             <h1>Welcome, {{ username }}!</h1>
-            <p>{{ text }}</p>
+            <div class = "text-editor">
+                {% for paragraph in paragraphs %}
+                    <p>{{ paragraph.strip() }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <footer>

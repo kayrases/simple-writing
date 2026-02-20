@@ -45,7 +45,8 @@ def signup():
 def welcome():
     username = session.get("username", None)
 
-    return render_template("welcome.html", username=username.title(), text=text)
+    paragraphs = text.split("\n\n")
+    return render_template("welcome.html", username=username.title(), paragraphs=paragraphs)
 
 @app.route('/analyze')
 def analyze(): 
