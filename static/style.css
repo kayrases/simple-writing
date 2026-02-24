@@ -2,10 +2,10 @@
 
 :root {
 	--text-color: #000;
-	--background-color: #fff;
+	--background-color: #e6e6e6;
 
-	--secondary-text-color: #333;
-	--secondary-background-color: #e6e6e6;
+	--secondary-text-color: #2c2c2c;
+	--secondary-background-color: #bbbbbb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +13,7 @@
 		--text-color: #fff;
 		--background-color: #222;
 
-		--secondary-text-color: #e6e6e6;
+		--secondary-text-color: #dadada;
 		--secondary-background-color: #777;
 	}
 }
@@ -37,6 +37,7 @@ h1 {
 
 p { 
 	text-indent: 36px; 
+	color: var(--secondary-text-color);
 }
 
 a {
@@ -60,7 +61,8 @@ a:hover {
 	position: sticky;
 	top: 0; 
 	width: 100px;
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 
 	overflow-y: auto;
 	background-color: var(--secondary-background-color);
@@ -79,7 +81,6 @@ a:hover {
 	
 	overflow-y: auto;
 	background-color: var(--background-color);
-	color: var(--secondary-text-color);
 }
 
 /* -----------------------forms--------------------------*/
@@ -101,7 +102,7 @@ a:hover {
 	font-family: Garamond, serif; 
 	font-size: 16px; 
 	line-height: 1.5; 
-	color: var(--text-color);
+	color: var(--secondary-text-color);
 }
 
 /* -----------------------buttons--------------------------*/
