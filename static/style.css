@@ -1,12 +1,24 @@
+/* -----------------------light/dark color controls--------------------------*/
+
 :root {
-	color-scheme: light dark;
+	--text-color: #000;
+	--background-color: #fff;
 
-	--text-color: light-dark(#000, #fff);
-	--background-color: light-dark(#fff, #111);
-
-	--secondary-text-color: light-dark(#333, #e6e6e6);
-	--secondary-background-color: light-dark(#e6e6e6, #222);
+	--secondary-text-color: #333;
+	--secondary-background-color: #e6e6e6;
 }
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-color: #fff;
+		--background-color: #222;
+
+		--secondary-text-color: #e6e6e6;
+		--secondary-background-color: #777;
+	}
+}
+
+/* -----------------------global--------------------------*/
 
 body {
 	margin: 0;
@@ -20,25 +32,57 @@ body {
 h1 {
     font-style: italic; 
     text-align: center; 
-    font-family: Garamond, serif; 
-    color: var(--text-color);
-	padding-top: 20px; 
-	padding-bottom: 20px;
+    padding: 20px 0; 
 }
 
-.button {
-	background-color: var(--background-color); 
-	color: var(--text-color); 
-	width: 100%; 
-	font-family: Garamond, serif; 
-	font-size: 14px; 
-	line-height: 1.5;
+p { 
+	text-indent: 36px; 
 }
+
+a {
+	color: #b8afca; 
+	text-decoration: none; 
+}
+
+a:hover {
+	color: #bae190; 
+	text-decoration: underline;
+}
+
+/* -----------------------layout--------------------------*/
 
 .flex-container {
 	display: flex;
 	height: 100vh; 
 }
+
+.sidebar {
+	position: sticky;
+	top: 0; 
+	width: 100px;
+	padding: 15px;
+
+	overflow-y: auto;
+	background-color: var(--secondary-background-color);
+}
+
+.sidebar ul {
+	list-style-type: none; 
+	padding: 0; 
+	margin: 0; 
+}
+
+.editor {
+	flex: 1; 
+	padding-left: 30px;
+	padding-right: 30px;
+	
+	overflow-y: auto;
+	background-color: var(--background-color);
+	color: var(--secondary-text-color);
+}
+
+/* -----------------------forms--------------------------*/
 
 .login-page-content {
 	padding-top: 100px;
@@ -60,44 +104,15 @@ h1 {
 	color: var(--text-color);
 }
 
-.sidebar {
-	position: sticky;
-	left: 0;
-	top: 0; 
-	width: 100px;
-	overflow-y: auto;
-	background-color: var(--secondary-background-color);
-	padding: 15px;
-}
+/* -----------------------buttons--------------------------*/
 
-.editor {
-	flex: 1; 
-	background-color: var(--background-color);
-	color: var(--secondary-text-color);
-	padding: 15px;
-	overflow-y: auto;
-
-	padding-left: 30px;
-	padding-right: 30px
-}
-
-p { 
-	text-indent: 36px; 
-}
-
-a {
-	color: #b8afca; 
-	text-decoration: none; 
-}
-
-a:hover {
-	color: #bae190; 
-	text-decoration: underline;
-}
-.sidebar ul {
-	list-style-type: none; 
-	padding: 0; 
-	margin: 0; 
+.button {
+	background-color: var(--background-color); 
+	color: var(--text-color); 
+	width: 100%; 
+	font-family: Garamond, serif; 
+	font-size: 14px; 
+	line-height: 1.5;
 }
 
 .folder {
