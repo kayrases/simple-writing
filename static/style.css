@@ -5,16 +5,28 @@
 	--background-color: #e6e6e6;
 
 	--secondary-text-color: #2c2c2c;
-	--secondary-background-color: #bbbbbb;
+	--secondary-background-color: #bac0c7;
+
+	--button-color: #4b5562;
+	--button-text: #e6e6e6;
+
+	--accent-color: #509ec5;
+	--active-accent-color: #b22cad;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--text-color: #fff;
-		--background-color: #222;
+		--background-color: #202124;
 
 		--secondary-text-color: #dadada;
-		--secondary-background-color: #777;
+		--secondary-background-color: #383c48;
+
+		--button-color: #21242c;
+		--button-text: #bfbfcb;
+
+		--accent-color: #b8afca;
+		--active-accent-color: #bae190;
 	}
 }
 
@@ -41,12 +53,12 @@ p {
 }
 
 a {
-	color: #b8afca; 
+	color: var(--accent-color); 
 	text-decoration: none; 
 }
 
 a:hover {
-	color: #bae190; 
+	color: var(--active-accent-color); 
 	text-decoration: underline;
 }
 
@@ -60,7 +72,9 @@ a:hover {
 .sidebar {
 	position: sticky;
 	top: 0; 
-	width: 100px;
+	min-width: 100px;
+	max-width: 200px;
+	width: 15%;
 	padding-left: 15px;
 	padding-right: 15px;
 
@@ -107,13 +121,17 @@ a:hover {
 
 /* -----------------------buttons--------------------------*/
 
-.button {
-	background-color: var(--background-color); 
-	color: var(--text-color); 
+button {
+	background-color: var(--button-color); 
+	color: var(--button-text);
 	width: 100%; 
-	font-family: Garamond, serif; 
+	font-family: 'Gill Sans', sans-serif;
+	font-weight: bold; 
 	font-size: 14px; 
 	line-height: 1.5;
+	padding: 5px;
+	
+	border: none;
 }
 
 .folder {
