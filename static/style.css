@@ -99,17 +99,6 @@ a:hover {
 
 /* -----------------------forms--------------------------*/
 
-.login-page-content {
-	padding-top: 100px;
-}
-
-.login {
-	display: flex; 
-	justify-content: center; 
-	align-items: center; 
-	padding: 10px;
-}
-
 .input {
 	border: none; 
 	background-color: var(--background-color); 
@@ -142,9 +131,39 @@ button {
 	margin-left: 20px;
 }
 
+.login-page ,
 .register-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	height: 100vh;
+}
+
+.login {
+	padding: 10px;
+}
+
+.button-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-row form {
+    margin: 0;
+}
+
+.button-row button {
+    width: 80px;
+}
+
+.signup {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	gap: 8px;
+	padding: 10px;
 }
