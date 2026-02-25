@@ -141,3 +141,10 @@ button {
 .document {
 	margin-left: 20px;
 }
+
+.register-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}

@@ -25,7 +25,7 @@ def login():
 
 ''' TODO: change the route that this starts from. It can't also start from /login''' 
 
-@app.route('/register', methods=['POST'])
+@app.route('/register')
 def register():
     return render_template('register.html')
 
