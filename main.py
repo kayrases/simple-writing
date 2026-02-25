@@ -1,7 +1,6 @@
 import os
-import re
-import string
 from flask import Flask, render_template, request, redirect, url_for, session
+from analysis import *
 
 app = Flask(__name__)
 app.secret_key = "secret-key"  
@@ -52,24 +51,6 @@ def welcome():
 def analyze(): 
     results = analyze_text(text)
     return render_template("analyze.html", **results)
-
-def clean_text(text):
-    text = text.lower()
-    text = re.sub(r"[^\w\s]", "", text)
-    text = text.replace("\n", " ")
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
-
-def analyze_text(text):
-    cleaned_text = clean_text(text)
-    words = cleaned_text.split()
-    word_count = len(words)
-    unique_words = set(words)
-    unique_word_count = len(unique_words)
-    return {
-        "word_count": len(words),
-        "unique_word_count": len(set(words))
-    }
 
 '''
 @app.route('/act')
