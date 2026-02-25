@@ -16,7 +16,7 @@ with open(file_path, "r", encoding="utf-8") as file:
 def index():
     return render_template('index.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login')
 def login():
     username = request.form.get("username")
     session["username"] = username
@@ -28,7 +28,7 @@ def login():
 def register():
     return render_template('register.html')
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup')
 def signup():
     username = request.form.get("username")
     session["username"] = username
