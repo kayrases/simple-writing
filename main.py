@@ -16,7 +16,7 @@ with open(file_path, "r", encoding="utf-8") as file:
 def index():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=["POST"])
 def login():
     username = request.form.get("username")
     session["username"] = username
@@ -28,7 +28,7 @@ def login():
 def register():
     return render_template('register.html')
 
-@app.route('/signup')
+@app.route('/signup' , methods=["POST"])
 def signup():
     username = request.form.get("username")
     session["username"] = username
@@ -40,9 +40,12 @@ def signup():
     else: 
         return "<h1>Passwords do not match. Please try again.</h1>"
     
-@app.route('/welcome')
+@app.route('/welcome' , methods=["GET"])
 def welcome():
     username = session.get("username", None)
+    
+    if not username:
+        return redirect(url_for("index"))
 
     paragraphs = text.split("\n\n")
     return render_template("welcome.html", username=username.title(), paragraphs=paragraphs)
