@@ -12,26 +12,28 @@
                 <h1>Welcome</h1>
             </div>
             
+            <form action="/login" method="POST">
+                <div class="login">
+                    <label for="username" style="padding-right: 5px;">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" class="input">
+                </div>
         
-            <div class="login">
-                <label for="username" style="padding-right: 5px;">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" class="input">
-            </div>
-    
-            <div class="login">
-                <label for="password" style="padding-right: 5px;">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" class="input">
-            </div>
+                <div class="login">
+                    <label for="password" style="padding-right: 5px;">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" class="input">
+                </div>
+                
+            </form>
 
             <div class="button-row">
-                <form action="/login" method="POST">
+                <form action="/login">
                     <button type="submit" class="button" style="width: 80px;">Login</button>
-                    
                 </form>
                 <form action="/register">
                     <button type="submit" class="button" style="width: 80px;">Register</button>
                 </form>
-            </div>  
+            </div>
+
         </div>
     </body>
 </html>
