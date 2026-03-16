@@ -16,7 +16,26 @@
         </div>
         <div class="editor">
             <h1>Here is a text analysis:</h1>
-            <p>Total word count (cleaned): {{ word_count }}</p>
+            <p>Total word count: {{ word_count }}</p>
+            <p>Unique words: {{ unique_word_count }}</p>
+
+            <h2>Most common words</h2>
+            <ul>
+                {% for word, count in common_words %}
+                    <li>{{ word }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Top 100 Word Histogram</h2>
+            <ul>
+                {% for word, count in histogram.items() %}
+                    <li>{{ word }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Generated text</h2>
+            <p> {{ markov_text }} </p>
+
         </div>
     </div>
 </body>

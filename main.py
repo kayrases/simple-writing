@@ -52,8 +52,20 @@ def welcome():
 
 @app.route('/analyze')
 def analyze(): 
-    results = analyze_text(text)
-    return render_template("analyze.html", **results)
+    word_count = count_words(text)
+    unique_word_count = count_unique_words(text)
+    common_words = most_common_words(text, 10)
+    histogram = word_historgram(text)
+    markov_text = markov_generation(text, 100)
+
+    return render_template(
+        "analyze.html",
+        word_count=word_count,
+        unique_word_count=unique_word_count,
+        common_words=common_words,
+        histogram=histogram,
+        markov_text=markov_text
+    )
 
 '''
 @app.route('/act')
