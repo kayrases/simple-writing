@@ -40,10 +40,10 @@ def most_common_words(text, num=10):
     sorted_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)
     return sorted_words[:num]
 
-# create a histogram of top 100 word frequencies
+# create a histogram of top 30 word frequencies
 def word_historgram(text):
-    # call most_common_words to get the top 100 words and their frequencies
-    most_common = most_common_words(text, 100)
+    # call most_common_words to get the top 30 words and their frequencies
+    most_common = most_common_words(text, 30)
 
     histogram = {}
     for word, count in most_common:

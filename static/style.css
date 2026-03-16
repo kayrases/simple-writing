@@ -167,3 +167,34 @@ button {
 	gap: 8px;
 	padding: 10px;
 }
+
+.histogram {
+    width: 100%;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.bar-label {
+    width: 80px;
+    font-size: 14px;
+}
+
+.bar-container {
+    flex: 1;
+    background: var(--secondary-background-color);
+    margin: 0 8px;
+}
+
+.bar {
+    height: 14px;
+    background: var(--accent-color);
+}
+
+.bar-count {
+    width: 40px;
+    font-size: 14px;
+}

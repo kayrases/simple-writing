@@ -26,12 +26,18 @@
                 {% endfor %}
             </ul>
 
-            <h2>Top 100 Word Histogram</h2>
-            <ul>
-                {% for word, count in histogram.items() %}
-                    <li>{{ word }}: {{ count }}</li>
-                {% endfor %}
-            </ul>
+            <h2>Top 30 Words Histogram</h2>
+            <div class="histogram">
+            {% for word, count in histogram.items() %}
+                <div class="bar-row">
+                    <span class="bar-label">{{ word }}</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: {{ count / max_count * 100 }}%;"></div>
+                    </div>
+                    <span class="bar-count">{{ count }}</span>
+                </div>
+            {% endfor %}
+            </div>
 
             <h2>Generated text</h2>
             <p> {{ markov_text }} </p>

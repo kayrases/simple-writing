@@ -58,12 +58,15 @@ def analyze():
     histogram = word_historgram(text)
     markov_text = markov_generation(text, 100)
 
+    max_count = max(histogram.values())
+
     return render_template(
         "analyze.html",
         word_count=word_count,
         unique_word_count=unique_word_count,
         common_words=common_words,
         histogram=histogram,
+        max_count=max_count,
         markov_text=markov_text
     )
 
