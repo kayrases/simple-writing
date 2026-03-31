@@ -7,10 +7,23 @@ app.secret_key = "secret-key"
 acts = []
 
 # load in white nights text
-base_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(base_dir, 'data', 'white-nights.txt')
-with open(file_path, "r", encoding="utf-8") as file: 
-    text = file.read()
+# base_dir = os.path.dirname(os.path.abspath(__file__))
+# file_path = os.path.join(base_dir, 'data', 'white-nights.txt')
+# with open(file_path, "r", encoding="utf-8") as file: 
+#    text = file.read()
+
+def load_text(filename):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, 'data', filename)
+    with open(file_path, "r", encoding="utf-8") as file: 
+        text = file.read()
+
+    return text
+
+@app.route('/select_text/<filename>')
+def select_text(filename):
+    session["current_file"] = filename
+    return redirect(url_for("welcome"))
 
 @app.route('/')
 def index():
@@ -21,8 +34,6 @@ def login():
     username = request.form.get("username")
     session["username"] = username
     return redirect(url_for("welcome"))
-
-''' TODO: change the route that this starts from. It can't also start from /login''' 
 
 @app.route('/register')
 def register():
@@ -47,11 +58,21 @@ def welcome():
     if not username:
         return redirect(url_for("index"))
 
+    filename = session.get("current_file", "white-nights.txt")
+    text = load_text(filename)
+
     paragraphs = text.split("\n\n")
-    return render_template("welcome.html", username=username.title(), paragraphs=paragraphs)
+    return render_template(
+        "welcome.html", 
+        username=username.title(), 
+        paragraphs=paragraphs
+    )
 
 @app.route('/analyze')
 def analyze(): 
+    filename = session.get("current_file", "white-nights.txt")
+    text = load_text(filename)
+
     word_count = count_words(text)
     unique_word_count = count_unique_words(text)
     common_words = most_common_words(text, 10)

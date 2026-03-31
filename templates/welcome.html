@@ -13,30 +13,13 @@
                     Analyze Text
                 </button>
             </form>
-            <!--- 
-            <form action="/addact" method="POST">
-                <div class="act">
-                    <input type="text" id="act" name="act" placeholder="Act name" class="input" style="width: 90%; margin-bottom : 10px;">
-                </div>
-                <div class="act">
-                    <button type="submit" class="button" style="width: 90%;">Create Act</button>
-                </div>
-            </form>
-            --->
-           <!--- <div class="add-section">
-                <button class="button" onclick="location.href='actone/actone.html'">Add Act</button>
-                <div style="margin: 10px 0;"></div>
-                <button class="button" onclick="location.href='actone/sceneone/sceneone.html'">Add Scene</button>
-                <div style="margin: 10px 0;"></div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Synopsis</a></li>
-                    <li><a href="actone/actone.html">Act One</a></li>
-                    <li style="margin-left: 20px;"><a href="actone/sceneone/sceneone.html">Scene One</a></li>
-                    <li style="margin-left: 20px;"><a href="actone/scenetwo/scenetwo.html">Scene Two</a></li>
-                </ul>
-            </nav>--->
+
+            <a href="{{ url_for('select_text', filename='white-nights.txt') }}">White Nights</a><br>
+            <a href="{{ url_for('select_text', filename='the-idiot.txt') }}">The Idiot</a><br>
+            <a href="{{ url_for('select_text', filename='crime-and-punishment.txt') }}">Crime and Punishment</a><br>
+            <a href="{{ url_for('select_text', filename='notes-from-the-underground.txt') }}">Notes from the Underground</a><br>
+            <a href="{{ url_for('select_text', filename='the-brothers-karamazov.txt') }}">The Brothers Karamazov</a><br>
+
         </div>
         <div class="editor">
             <h1>Welcome, {{ username }}!</h1>
