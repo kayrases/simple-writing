@@ -192,6 +192,7 @@ button {
 .bar {
     height: 14px;
     background: var(--accent-color);
+	width: var(--width);
 }
 
 .bar-count {

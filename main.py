@@ -67,16 +67,29 @@ def analyze():
     filename = session.get("current_file", "white-nights.txt")
     text = load_text(filename)
 
-    word_count = count_words(text)
-    unique_word_count = count_unique_words(text)
-    common_words = most_common_words(text, 10)
-    histogram = word_historgram(text)
-    markov_text = markov_generation(text, 100)
+    #word_count = count_words(text)
+    #unique_word_count = count_unique_words(text)
+    #common_words = most_common_words(text, 10)
+    #histogram = word_historgram(text)
+
+    words = clean_text(text)
+    filtered_words = remove_stopwords(words)
+
+    from collections import Counter
+    freq = Counter(filtered_words)
+
+    word_count = len(words)
+    unique_word_count = len(set(words))
+    common_words = freq.most_common(10)
+    histogram = dict(freq.most_common(30))
+
+    markov_text = markov_generation(words, 100)
 
     max_count = max(histogram.values())
 
     return render_template(
         "analyze.html",
+        filename = filename.removesuffix(".txt").replace("-", " ").title(),
         word_count=word_count,
         unique_word_count=unique_word_count,
         common_words=common_words,
@@ -84,23 +97,6 @@ def analyze():
         max_count=max_count,
         markov_text=markov_text
     )
-
-'''
-@app.route('/act')
-def addact():
-    actname = session.get("act", None)
-    acts.append(actname)
-    return render_template('act.html')
-'''
-
-'''
-@app.route('/populateacts')
-def populateacts():
-    populated = ""
-    for act in acts:
-        populated += f'<button class="{button}" onclick="{act}.href="actone/actone.html"">{act}</button>'
-    return populated
-'''
     
 if __name__ == "__main__":
     app.run(debug=True)

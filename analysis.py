@@ -3,14 +3,6 @@ import random
 
 import nltk
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
-stemmer = PorterStemmer()
-
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
 
 try:
     nltk.data.find('corpora/stopwords')
@@ -26,7 +18,7 @@ def read_file(filename):
 # ALL LOWER CAPS, AND SHOULD NOT REMOVE ANY PUNCTUATION, BUT PUNCTUATION SHOULD BE ITS OWN ENTRY INTO THE LIST
 def clean_text(text):
     text = text.lower()
-    words = word_tokenize(text)
+    words = re.findall(r"\w+|[^\w\s]", text.lower())
     return words
 
 def clean_text_no_punctuation(text):
@@ -36,52 +28,13 @@ def clean_text_no_punctuation(text):
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
-# count the number of words in a text
-def count_words(text):
-    cleaned = clean_text_no_punctuation(text)
-    words = cleaned.split()
-    return len(words)
-
-# count the number of unique words in a text
-def count_unique_words(text):
-    words=clean_text(text)
-    return len(set(words))
-
+stop_words = set(stopwords.words('english'))
 def remove_stopwords(words):
-    stop_words = set(stopwords.words('english'))
     filtered_words = [word for word in words if word not in stop_words and word.isalpha()]
     return filtered_words
 
-# find the most common num words in a text
-def most_common_words(text, num=10):
-    words = clean_text(text)
-    words = remove_stopwords(words)
-    words = [stemmer.stem(word) for word in words]
-
-    freq = {}
-    for word in words: 
-        if word in freq:
-            freq[word] += 1
-        else: 
-            freq[word] = 1
-    
-    sorted_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-    return sorted_words[:num]
-
-# create a histogram of top 30 word frequencies
-def word_historgram(text):
-    # call most_common_words to get the top 30 words and their frequencies
-    most_common = most_common_words(text, 30)
-
-    histogram = {}
-    for word, count in most_common:
-        histogram[word] = count
-    
-    return histogram
-
 # generate a new text of a given length using a Markov chain based on the input text
-def markov_generation(text, length=100):
-    words = clean_text(text)
+def markov_generation(words, length=100):
 
     chain = {}
 
