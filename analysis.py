@@ -1,12 +1,35 @@
 import re
 import random
 
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
+stemmer = PorterStemmer()
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+
 # read a file
 def read_file(filename):
     with open(filename, "r") as file:
         return file.read()
-    
+
+# THIS FUNCTION SHOULD RETURN A LIST OF WORDS IN THE TEXT, INCLUDING 
+# ALL LOWER CAPS, AND SHOULD NOT REMOVE ANY PUNCTUATION, BUT PUNCTUATION SHOULD BE ITS OWN ENTRY INTO THE LIST
 def clean_text(text):
+    text = text.lower()
+    words = word_tokenize(text)
+    return words
+
+def clean_text_no_punctuation(text):
     text = text.lower()
     text = re.sub(r"[^\w\s]", "", text)
     text = text.replace("\n", " ")
@@ -15,20 +38,25 @@ def clean_text(text):
 
 # count the number of words in a text
 def count_words(text):
-    cleaned = clean_text(text)
+    cleaned = clean_text_no_punctuation(text)
     words = cleaned.split()
     return len(words)
 
 # count the number of unique words in a text
 def count_unique_words(text):
-    cleaned = clean_text(text)
-    words=cleaned.split()
+    words=clean_text(text)
     return len(set(words))
+
+def remove_stopwords(words):
+    stop_words = set(stopwords.words('english'))
+    filtered_words = [word for word in words if word not in stop_words and word.isalpha()]
+    return filtered_words
 
 # find the most common num words in a text
 def most_common_words(text, num=10):
-    cleaned = clean_text(text)
-    words = cleaned.split()
+    words = clean_text(text)
+    words = remove_stopwords(words)
+    words = [stemmer.stem(word) for word in words]
 
     freq = {}
     for word in words: 
@@ -53,8 +81,7 @@ def word_historgram(text):
 
 # generate a new text of a given length using a Markov chain based on the input text
 def markov_generation(text, length=100):
-    cleaned = clean_text(text)
-    words = cleaned.split()
+    words = clean_text(text)
 
     chain = {}
 
@@ -78,16 +105,3 @@ def markov_generation(text, length=100):
         result.append(word)
 
     return " ".join(result)
-
-'''
-def analyze_text(text):
-    cleaned_text = clean_text(text)
-    words = cleaned_text.split()
-    word_count = len(words)
-    unique_words = set(words)
-    unique_word_count = len(unique_words)
-    return {
-        "word_count": len(words),
-        "unique_word_count": len(set(words))
-    }
-'''

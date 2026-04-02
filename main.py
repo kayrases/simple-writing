@@ -6,12 +6,6 @@ app = Flask(__name__)
 app.secret_key = "secret-key"  
 acts = []
 
-# load in white nights text
-# base_dir = os.path.dirname(os.path.abspath(__file__))
-# file_path = os.path.join(base_dir, 'data', 'white-nights.txt')
-# with open(file_path, "r", encoding="utf-8") as file: 
-#    text = file.read()
-
 def load_text(filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(base_dir, 'data', filename)
