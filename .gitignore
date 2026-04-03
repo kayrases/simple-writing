@@ -1,5 +1,12 @@
+.DS_Store
+__pycache__
+
+# local environment
 venv/
 .venv/
 env/
-.DS_Store
-__pycache__
+
+# generated packaging files
+*.egg-info/
+dist/
+build/
