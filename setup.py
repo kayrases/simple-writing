@@ -1,7 +1,7 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name="simple-writing",
+    name="simplewriting",
     version="0.1",
-    py_modules=["analysis"],
+    packages=find_packages(),
 )
