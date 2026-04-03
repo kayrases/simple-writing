@@ -3,16 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from analysis import *
 
 app = Flask(__name__)
-app.secret_key = "secret-key"  
-acts = []
-
-def load_text(filename):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, 'data', filename)
-    with open(file_path, "r", encoding="utf-8") as file: 
-        text = file.read()
-
-    return text
+app.secret_key = "secret-key"
 
 @app.route('/select_text/<filename>')
 def select_text(filename):
