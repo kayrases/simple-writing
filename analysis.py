@@ -84,10 +84,10 @@ def markov_generation(words, length=100):
             text += token
             capitalize = True
         elif text == "" and capitalize:
-            text+= token.title()
+            text+= token.capitalize()
             capitalize = False
         elif capitalize:
-            text+= " " + token.title()
+            text+= " " + token.capitalize()
             capitalize = False
         else: 
             text+= " " + token
