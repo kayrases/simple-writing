@@ -73,8 +73,8 @@ def markov_generation(words, length=100):
             word = random.choice(words)
         result.append(word)
 
-    endSetnence = set(".!?\"")
-    punctuation = set(",;:()[]{}-")
+    endSetnence = set(".!?")
+    punctuation = set(",;:()[]{}-\"''")
     text = ""
     capitalize = True
     for token in result: 
