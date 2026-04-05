@@ -23,8 +23,12 @@ def read_file(filename):
         return file.read()
 
 def clean_text(text):
+
+    # TODO: keep proper nouns capital
+
     text = text.lower()
-    words = re.findall(r"\.\.\.|\-\-|\b\w+(?:'\w+)?\b|[.,!?;:\"()\[\]{}\-]", text)
+    text = text.replace("’", "'").replace("‘", "'")
+    words = re.findall(r"[\d+\]|\.\.\.|\-\-|\b[a-z0-9]+(?:'[a-z]+)?\b|[.,!?;:()\[\]{}\-]", text)
     return words
 
 def clean_text_no_punctuation(text):
@@ -69,14 +73,23 @@ def markov_generation(words, length=100):
             word = random.choice(words)
         result.append(word)
 
-    punctuation = set(".!?;:\"()[]{}-")
+    endSetnence = set(".!?\"")
+    punctuation = set(",;:()[]{}-")
     text = ""
+    capitalize = True
     for token in result: 
         if token in punctuation or token in ["...", "--"]:
-            text+= token
-        elif text == "":
-            text+= token
-        else:
+            text += token
+        elif token in endSetnence:
+            text += token
+            capitalize = True
+        elif text == "" and capitalize:
+            text+= token.title()
+            capitalize = False
+        elif capitalize:
+            text+= " " + token.title()
+            capitalize = False
+        else: 
             text+= " " + token
 
     return text
