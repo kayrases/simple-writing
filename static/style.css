@@ -10,6 +10,9 @@
 	--button-color: #4b5562;
 	--button-text: #e6e6e6;
 
+	--good-button: #bae190;
+	--bad-button: #e38b6b;
+
 	--accent-color: #509ec5;
 	--active-accent-color: #b22cad;
 }
@@ -24,6 +27,9 @@
 
 		--button-color: #21242c;
 		--button-text: #bfbfcb;
+
+		--good-button: #6e8669;
+		--bad-button: #5d554c;
 
 		--accent-color: #b8afca;
 		--active-accent-color: #bae190;
@@ -97,17 +103,6 @@ a:hover {
 	background-color: var(--background-color);
 }
 
-/* -----------------------forms--------------------------*/
-
-.input {
-	border: none; 
-	background-color: var(--secondary-background-color); 
-	font-family: Garamond, serif; 
-	font-size: 16px; 
-	line-height: 1.5; 
-	color: var(--secondary-text-color);
-}
-
 /* -----------------------buttons--------------------------*/
 
 button {
@@ -167,6 +162,43 @@ button {
 	gap: 8px;
 	padding: 10px;
 }
+
+/* -----------------------forms--------------------------*/
+
+.input {
+	border: none; 
+	background-color: var(--secondary-background-color); 
+	font-family: Garamond, serif; 
+	font-size: 16px; 
+	line-height: 1.5; 
+	color: var(--secondary-text-color);
+}
+
+.feedback {
+	display: flex;
+	gap: 12px;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.feedback button {
+	width: auto;
+	border-radius: 15px;
+}
+
+.feedback-good {
+    background: var(--good-button);
+}
+
+.feedback-bad {
+    background: var(--bad-button);
+}
+
+.feedback button:hover {
+    transform: translateY(-1px);
+}
+
+/* -----------------------histogram--------------------------*/
 
 .histogram {
     width: 100%;

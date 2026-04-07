@@ -69,14 +69,18 @@ def analyze():
     from collections import Counter
     freq = Counter(filtered_words)
 
+    # generic stats
     word_count = len(words)
     unique_word_count = len(set(words))
     common_words = freq.most_common(10)
     histogram = dict(freq.most_common(30))
-
-    markov_text = markov_generation(words, 100)
-
     max_count = max(histogram.values())
+
+    # text gen
+    chain = load_chain()
+    if not chain:
+        chain = create_chain(words)
+    markov_text = markov_generation(words, chain, 10)
 
     return render_template(
         "analyze.html",
@@ -88,6 +92,21 @@ def analyze():
         max_count=max_count,
         markov_text=markov_text
     )
+
+@app.route('/reinforce', methods=["POST"])
+def reinforce():
+
+    feedback = request.form.get("feedback")
+    generated_text = request.form.get("generated_text")
+
+    good = feedback == "good"
+
+    chain = load_chain()
+    chain = reinforce_chain(chain, generated_text, good)
+
+    save_chain(chain)
+
+    return redirect(url_for("analyze"))
     
 if __name__ == "__main__":
     app.run(debug=True)

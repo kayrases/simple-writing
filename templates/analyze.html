@@ -21,6 +21,19 @@
             <h2>Generated text</h2>
             <p> {{ markov_text }} </p>
 
+            <form action="{{ url_for('reinforce') }}" method="POST">
+                <input type="hidden" name="generated_text" value="{{ markov_text }}">
+                <div class="feedback">
+                    <button class="feedback-good" name="feedback" value="good">
+                        Good
+                    </button>
+                
+                    <button class="feedback-bad" name="feedback" value="bad">
+                        Bad
+                    </button>
+                </div>
+            </form>
+
             <p>Total word count: {{ word_count }}</p>
             <p>Unique words: {{ unique_word_count }}</p>
 
